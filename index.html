@@ -130,8 +130,27 @@
             color: var(--text-primary);
         }
 
-        /* Tesla-style CTA Button */
-        .nav-cta {
+        /* Auth Buttons */
+        .nav-auth {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-signin {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-signin:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-register {
             background: var(--text-primary);
             color: var(--primary-bg);
             padding: 0.75rem 1.5rem;
@@ -143,11 +162,360 @@
             letter-spacing: 0.02em;
         }
 
-        .nav-cta:hover {
+        .nav-register:hover {
             background: var(--accent-cyan);
             transform: translateY(-1px);
             box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
         }
+
+        /* User Profile Dropdown */
+        .user-profile {
+            position: relative;
+            display: none;
+        }
+
+        .user-profile.show {
+            display: block;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .user-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+        }
+
+        .dropdown-item:last-child {
+            border-top: 1px solid var(--border-color);
+            color: var(--error);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            transform: scale(0.9) translateY(50px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .modal-overlay.show .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox.checked {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary-bg);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .form-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .form-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: var(--text-primary);
+            color: var(--primary-bg);
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-cyan);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            margin-top: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass-bg);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* Social Login */
+        .social-login {
+            margin: 1.5rem 0;
+        }
+
+        .social-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .social-divider::before,
+        .social-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .social-divider span {
+            padding: 0 1rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            margin-bottom: 0.75rem;
+        }
+
+        .social-btn:hover {
+            background: var(--glass-bg);
+            border-color: var(--accent-cyan);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .google { background: #4285f4; }
+        .github { background: #333; }
+        .linkedin { background: #0077b5; }
 
         /* Mobile Menu */
         .mobile-menu-toggle {
@@ -164,7 +532,7 @@
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Hero Section - Tesla Style */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -221,7 +589,7 @@
             flex-wrap: wrap;
         }
 
-        .btn-primary {
+        .btn-hero-primary {
             background: var(--text-primary);
             color: var(--primary-bg);
             padding: 1rem 2rem;
@@ -236,13 +604,13 @@
             letter-spacing: 0.02em;
         }
 
-        .btn-primary:hover {
+        .btn-hero-primary:hover {
             background: var(--accent-cyan);
             transform: translateY(-2px);
             box-shadow: 0 15px 50px rgba(0, 212, 255, 0.4);
         }
 
-        .btn-secondary {
+        .btn-hero-secondary {
             background: transparent;
             color: var(--text-primary);
             padding: 1rem 2rem;
@@ -257,7 +625,7 @@
             letter-spacing: 0.02em;
         }
 
-        .btn-secondary:hover {
+        .btn-hero-secondary:hover {
             background: var(--glass-bg);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
@@ -422,176 +790,51 @@
             margin-top: 0.25rem;
         }
 
-        /* AI Playground Tesla Style */
-        .playground-container {
-            background: var(--secondary-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 3rem 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .model-selector {
+        /* Platform Links Section */
+        .platforms-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .model-option {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-
-        .model-option:hover,
-        .model-option.active {
-            border-color: var(--accent-cyan);
-            background: rgba(0, 212, 255, 0.05);
-        }
-
-        .model-option.active::after {
-            content: '✓';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: var(--accent-cyan);
-            font-weight: bold;
-        }
-
-        .model-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .model-provider {
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .model-specs {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .playground-interface {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .input-panel,
-        .output-panel {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .panel-title {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .textarea {
-            width: 100%;
-            min-height: 200px;
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1rem;
-            color: var(--text-primary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            resize: vertical;
-            transition: border-color 0.3s ease;
-        }
-
-        .textarea:focus {
-            outline: none;
-            border-color: var(--accent-cyan);
-        }
-
-        .textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        /* Status Indicators */
-        .status-bar {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1rem 0;
-            padding: 0.75rem 1rem;
-            background: var(--glass-bg);
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .status-dot.warning { background: var(--warning); }
-        .status-dot.error { background: var(--error); }
-
-        /* News Cards */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
 
-        .news-card {
+        .platform-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .news-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-cyan);
-        }
-
-        .news-content {
             padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
-        .news-meta {
+        .platform-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .platform-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: space-between;
             margin-bottom: 1rem;
         }
 
-        .news-tag {
+        .platform-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .platform-name:hover {
+            color: var(--accent-cyan);
+        }
+
+        .platform-badge {
             background: var(--accent-blue);
             color: white;
             padding: 0.25rem 0.75rem;
@@ -600,37 +843,95 @@
             font-weight: 500;
         }
 
-        .news-date {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+        .platform-badge.popular { background: var(--success); }
+        .platform-badge.emerging { background: var(--warning); }
+        .platform-badge.niche { background: var(--accent-purple); }
 
-        .news-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .news-excerpt {
+        .platform-description {
             color: var(--text-secondary);
+            font-size: 0.9rem;
             line-height: 1.5;
             margin-bottom: 1rem;
         }
 
-        .read-more {
+        .platform-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-tag {
+            background: var(--secondary-bg);
+            color: var(--text-muted);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .platform-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--accent-cyan);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .platform-link:hover {
+            color: var(--accent-blue);
+            gap: 0.75rem;
+        }
+
+        /* Dashboard Cards */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+        }
+
+        .dashboard-metric {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .dashboard-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .dashboard-trend {
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            transition: gap 0.3s ease;
-        }
-
-        .read-more:hover {
-            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--success);
         }
 
         /* Footer */
@@ -690,10 +991,54 @@
             font-size: 0.85rem;
         }
 
+        /* Page System */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .loading-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .nav-auth {
+                gap: 0.5rem;
+            }
+
+            .nav-register {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
             }
 
             .mobile-menu-toggle {
@@ -709,21 +1054,23 @@
                 align-items: center;
             }
 
-            .playground-interface {
-                grid-template-columns: 1fr;
-            }
-
             .section {
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
 
-            .cards-grid {
+            .cards-grid, .platforms-grid {
                 grid-template-columns: 1fr;
             }
 
-            .news-grid {
-                grid-template-columns: 1fr;
+            .modal {
+                width: 95%;
+                margin: 0 1rem;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
             }
         }
 
@@ -744,98 +1091,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-cyan);
         }
-
-        /* Page Transitions */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Loading States */
-        .loading {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .loading-dots {
-            display: inline-flex;
-            gap: 4px;
-        }
-
-        .loading-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent-cyan);
-            animation: loadingPulse 1.4s ease-in-out infinite both;
-        }
-
-        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes loadingPulse {
-            0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-            40% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Tesla-inspired Dashboard Elements */
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .dashboard-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dashboard-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
-        }
-
-        .dashboard-metric {
-            font-size: 2.5rem;
-            font-weight: 200;
-            color: var(--text-primary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .dashboard-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        .dashboard-trend {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--success);
-        }
     </style>
 </head>
 <body>
@@ -850,10 +1105,29 @@
                 <li><a href="#" class="nav-link" onclick="showPage('events')" data-page="events">Events</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('companies')" data-page="companies">Companies</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('playground')" data-page="playground">Playground</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('platforms')" data-page="platforms">Platforms</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('research')" data-page="research">Research</a></li>
             </ul>
 
-            <a href="#" class="nav-cta" onclick="showPage('playground')">Try AI</a>
+            <!-- Authentication Section -->
+            <div class="nav-auth" id="nav-auth-guest">
+                <a href="#" class="nav-signin" onclick="showModal('signin')">Sign In</a>
+                <a href="#" class="nav-register" onclick="showModal('register')">Register</a>
+            </div>
+
+            <!-- User Profile (Hidden by default) -->
+            <div class="user-profile" id="nav-auth-user">
+                <div class="user-avatar" onclick="toggleUserDropdown()">
+                    <span id="user-initials">JD</span>
+                </div>
+                <div class="user-dropdown" id="user-dropdown">
+                    <a href="#" class="dropdown-item" onclick="showPage('profile')">👤 Profile</a>
+                    <a href="#" class="dropdown-item" onclick="showPage('settings')">⚙️ Settings</a>
+                    <a href="#" class="dropdown-item" onclick="showPage('billing')">💳 Billing</a>
+                    <a href="#" class="dropdown-item" onclick="showPage('playground')">🎮 Playground</a>
+                    <a href="#" class="dropdown-item" onclick="signOut()">🚪 Sign Out</a>
+                </div>
+            </div>
 
             <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 <div class="mobile-menu-bar"></div>
@@ -862,6 +1136,222 @@
             </div>
         </div>
     </nav>
+
+    <!-- Sign In Modal -->
+    <div class="modal-overlay" id="signin-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="hideModal('signin')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Welcome Back</h2>
+                <p class="modal-subtitle">Sign in to your pksh.ai account</p>
+            </div>
+            <div class="modal-body">
+                <form id="signin-form" onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="signin-email">Email</label>
+                        <input 
+                            type="email" 
+                            id="signin-email" 
+                            class="form-input" 
+                            placeholder="your@email.com"
+                            required
+                        >
+                        <div class="form-error" id="signin-email-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="signin-password">Password</label>
+                        <input 
+                            type="password" 
+                            id="signin-password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <div class="form-error" id="signin-password-error"></div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <div class="checkbox" onclick="toggleCheckbox('signin-remember')"></div>
+                        <label class="checkbox-label">Remember me</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="signin-submit">
+                        <span id="signin-submit-text">Sign In</span>
+                    </button>
+
+                    <div class="social-divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <div class="social-login">
+                        <a href="#" class="social-btn" onclick="socialLogin('google')">
+                            <div class="social-icon google">G</div>
+                            Continue with Google
+                        </a>
+                        <a href="#" class="social-btn" onclick="socialLogin('github')">
+                            <div class="social-icon github">⚡</div>
+                            Continue with GitHub
+                        </a>
+                        <a href="#" class="social-btn" onclick="socialLogin('linkedin')">
+                            <div class="social-icon linkedin">in</div>
+                            Continue with LinkedIn
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn-secondary" onclick="switchModal('signin', 'register')">
+                        Don't have an account? Register
+                    </button>
+                </form>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="#" class="form-link" onclick="showModal('forgot-password')">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="register-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="hideModal('register')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Join pksh.ai</h2>
+                <p class="modal-subtitle">Create your AI intelligence account</p>
+            </div>
+            <div class="modal-body">
+                <form id="register-form" onsubmit="handleRegister(event)">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label" for="register-firstname">First Name</label>
+                            <input 
+                                type="text" 
+                                id="register-firstname" 
+                                class="form-input" 
+                                placeholder="John"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="register-lastname">Last Name</label>
+                            <input 
+                                type="text" 
+                                id="register-lastname" 
+                                class="form-input" 
+                                placeholder="Doe"
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="register-email">Email</label>
+                        <input 
+                            type="email" 
+                            id="register-email" 
+                            class="form-input" 
+                            placeholder="your@email.com"
+                            required
+                        >
+                        <div class="form-error" id="register-email-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="register-password">Password</label>
+                        <input 
+                            type="password" 
+                            id="register-password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <div class="form-error" id="register-password-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="register-confirm-password">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="register-confirm-password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <div class="form-error" id="register-confirm-password-error"></div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <div class="checkbox" onclick="toggleCheckbox('register-terms')"></div>
+                        <label class="checkbox-label">
+                            I agree to the <a href="#" class="form-link">Terms of Service</a> and <a href="#" class="form-link">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <div class="checkbox" onclick="toggleCheckbox('register-newsletter')"></div>
+                        <label class="checkbox-label">Send me AI insights and product updates</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="register-submit">
+                        <span id="register-submit-text">Create Account</span>
+                    </button>
+
+                    <div class="social-divider">
+                        <span>or register with</span>
+                    </div>
+
+                    <div class="social-login">
+                        <a href="#" class="social-btn" onclick="socialLogin('google')">
+                            <div class="social-icon google">G</div>
+                            Continue with Google
+                        </a>
+                        <a href="#" class="social-btn" onclick="socialLogin('github')">
+                            <div class="social-icon github">⚡</div>
+                            Continue with GitHub
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn-secondary" onclick="switchModal('register', 'signin')">
+                        Already have an account? Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal-overlay" id="forgot-password-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="hideModal('forgot-password')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Reset Password</h2>
+                <p class="modal-subtitle">Enter your email to receive reset instructions</p>
+            </div>
+            <div class="modal-body">
+                <form id="forgot-password-form" onsubmit="handleForgotPassword(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="forgot-email">Email</label>
+                        <input 
+                            type="email" 
+                            id="forgot-email" 
+                            class="form-input" 
+                            placeholder="your@email.com"
+                            required
+                        >
+                        <div class="form-error" id="forgot-email-error"></div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="forgot-submit">
+                        <span id="forgot-submit-text">Send Reset Link</span>
+                    </button>
+
+                    <button type="button" class="btn-secondary" onclick="switchModal('forgot-password', 'signin')">
+                        Back to Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Home Page -->
     <div id="home" class="page active">
@@ -876,8 +1366,8 @@
                 <h1 class="hero-title">The Future of AI</h1>
                 <p class="hero-subtitle">Experience artificial intelligence through premium design, cutting-edge insights, and innovative tools</p>
                 <div class="hero-actions">
-                    <a href="#" class="btn-primary" onclick="showPage('playground')">Explore AI Playground</a>
-                    <a href="#" class="btn-secondary" onclick="showPage('news')">Latest Updates</a>
+                    <a href="#" class="btn-hero-primary" onclick="showPage('playground')">Explore AI Playground</a>
+                    <a href="#" class="btn-hero-secondary" onclick="showPage('platforms')">Browse Platforms</a>
                 </div>
             </div>
         </section>
@@ -901,9 +1391,9 @@
                     <div class="dashboard-trend">↗ +14.3K monthly</div>
                 </div>
                 <div class="dashboard-card">
-                    <div class="dashboard-metric">89.7%</div>
-                    <div class="dashboard-label">Model Accuracy</div>
-                    <div class="dashboard-trend">↗ +2.1% improved</div>
+                    <div class="dashboard-metric">47</div>
+                    <div class="dashboard-label">AI Platforms</div>
+                    <div class="dashboard-trend">↗ +8 integrated</div>
                 </div>
             </div>
         </section>
@@ -931,18 +1421,18 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">📊</div>
-                        <h3 class="card-title">Intelligence Analytics</h3>
+                        <div class="card-icon">🔗</div>
+                        <h3 class="card-title">Platform Integration</h3>
                     </div>
-                    <p class="card-description">Real-time insights into AI industry trends, market movements, and breakthrough technologies.</p>
+                    <p class="card-description">Direct access to Hugging Face, Kaggle, arXiv, and 40+ other major AI platforms from one unified interface.</p>
                     <div class="card-stats">
                         <div class="stat">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Monitoring</div>
+                            <div class="stat-number">47</div>
+                            <div class="stat-label">Platforms</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">1M+</div>
-                            <div class="stat-label">Data Points</div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Access</div>
                         </div>
                     </div>
                 </div>
@@ -968,320 +1458,382 @@
         </section>
     </div>
 
-    <!-- AI News Page -->
+    <!-- AI Platforms Page -->
+    <div id="platforms" class="page">
+        <section class="section" style="margin-top: 90px;">
+            <h1 class="section-title">🔗 AI Model & Data Platforms</h1>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Access the complete ecosystem of AI platforms, models, datasets, and research tools</p>
+
+            <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">🏆 Major AI Model & Data Platforms</h3>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://huggingface.co" target="_blank" class="platform-name">Hugging Face</a>
+                        <span class="platform-badge popular">Popular</span>
+                    </div>
+                    <p class="platform-description">Leading platform for open-source models, datasets, and interactive AI demos. Home to transformer models and the AI community.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Models</span>
+                        <span class="feature-tag">Datasets</span>
+                        <span class="feature-tag">Spaces</span>
+                        <span class="feature-tag">Transformers</span>
+                    </div>
+                    <a href="https://huggingface.co" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://kaggle.com" target="_blank" class="platform-name">Kaggle</a>
+                        <span class="platform-badge popular">Popular</span>
+                    </div>
+                    <p class="platform-description">World's largest data science community with datasets, notebooks, competitions, and collaborative ML environment.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Datasets</span>
+                        <span class="feature-tag">Competitions</span>
+                        <span class="feature-tag">Notebooks</span>
+                        <span class="feature-tag">Courses</span>
+                    </div>
+                    <a href="https://kaggle.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://civitai.com" target="_blank" class="platform-name">Civitai</a>
+                        <span class="platform-badge">Specialized</span>
+                    </div>
+                    <p class="platform-description">Community-driven platform focused on AI art models, especially generative art and diffusion models for creative applications.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Diffusion Models</span>
+                        <span class="feature-tag">AI Art</span>
+                        <span class="feature-tag">Community</span>
+                        <span class="feature-tag">LoRA</span>
+                    </div>
+                    <a href="https://civitai.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://openreview.net" target="_blank" class="platform-name">OpenReview</a>
+                        <span class="platform-badge">Academic</span>
+                    </div>
+                    <p class="platform-description">Open peer review platform for AI research papers, conference submissions, and transparent scientific evaluation.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Peer Review</span>
+                        <span class="feature-tag">Papers</span>
+                        <span class="feature-tag">Conferences</span>
+                        <span class="feature-tag">Open Science</span>
+                    </div>
+                    <a href="https://openreview.net" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://arxiv.org" target="_blank" class="platform-name">arXiv</a>
+                        <span class="platform-badge popular">Essential</span>
+                    </div>
+                    <p class="platform-description">Preprint repository for scientific papers, widely used by the AI research community for sharing latest research.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Preprints</span>
+                        <span class="feature-tag">Research</span>
+                        <span class="feature-tag">cs.AI</span>
+                        <span class="feature-tag">cs.LG</span>
+                    </div>
+                    <a href="https://arxiv.org" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+            </div>
+
+            <h3 style="color: var(--text-primary); margin: 3rem 0 1.5rem; font-size: 1.5rem;">🔬 Alternative Platforms & Tools</h3>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://deepai.org" target="_blank" class="platform-name">DeepAI</a>
+                        <span class="platform-badge">API</span>
+                    </div>
+                    <p class="platform-description">Pre-trained models and APIs for various AI tasks including text, image, and video processing.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">APIs</span>
+                        <span class="feature-tag">Pre-trained</span>
+                        <span class="feature-tag">Text</span>
+                        <span class="feature-tag">Vision</span>
+                    </div>
+                    <a href="https://deepai.org" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://paperswithcode.com" target="_blank" class="platform-name">Papers with Code</a>
+                        <span class="platform-badge popular">Popular</span>
+                    </div>
+                    <p class="platform-description">Connects research papers with code implementations and benchmarks, making AI research reproducible.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Papers</span>
+                        <span class="feature-tag">Code</span>
+                        <span class="feature-tag">Benchmarks</span>
+                        <span class="feature-tag">SOTA</span>
+                    </div>
+                    <a href="https://paperswithcode.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://pytorch.org/hub" target="_blank" class="platform-name">PyTorch Hub</a>
+                        <span class="platform-badge">Framework</span>
+                    </div>
+                    <p class="platform-description">Repository of PyTorch-based pre-trained models ready for inference, fine-tuning, and research.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">PyTorch</span>
+                        <span class="feature-tag">Pre-trained</span>
+                        <span class="feature-tag">Research</span>
+                        <span class="feature-tag">Computer Vision</span>
+                    </div>
+                    <a href="https://pytorch.org/hub" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://github.com/onnx/models" target="_blank" class="platform-name">ONNX Model Zoo</a>
+                        <span class="platform-badge">Open Source</span>
+                    </div>
+                    <p class="platform-description">Community repository of models in ONNX format for interoperability across different frameworks.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">ONNX</span>
+                        <span class="feature-tag">Interoperability</span>
+                        <span class="feature-tag">Cross-platform</span>
+                        <span class="feature-tag">Optimized</span>
+                    </div>
+                    <a href="https://github.com/onnx/models" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://cloud.google.com/model-garden" target="_blank" class="platform-name">Google Model Garden</a>
+                        <span class="platform-badge">Enterprise</span>
+                    </div>
+                    <p class="platform-description">Curated collection of models and ML workflows for Google Cloud developers and enterprises.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Google Cloud</span>
+                        <span class="feature-tag">Enterprise</span>
+                        <span class="feature-tag">Curated</span>
+                        <span class="feature-tag">Production</span>
+                    </div>
+                    <a href="https://cloud.google.com/model-garden" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://spacy.io/universe" target="_blank" class="platform-name">spaCy Universe</a>
+                        <span class="platform-badge">NLP</span>
+                    </div>
+                    <p class="platform-description">Ecosystem of add-ons, models, and extensions for the popular spaCy NLP library and framework.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">NLP</span>
+                        <span class="feature-tag">spaCy</span>
+                        <span class="feature-tag">Extensions</span>
+                        <span class="feature-tag">Language Models</span>
+                    </div>
+                    <a href="https://spacy.io/universe" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+            </div>
+
+            <h3 style="color: var(--text-primary); margin: 3rem 0 1.5rem; font-size: 1.5rem;">🚀 Emerging & Specialized Platforms</h3>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://wandb.ai" target="_blank" class="platform-name">Weights & Biases</a>
+                        <span class="platform-badge emerging">MLOps</span>
+                    </div>
+                    <p class="platform-description">Experiment tracking, dataset versioning, and model management platform for machine learning workflows.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Experiment Tracking</span>
+                        <span class="feature-tag">MLOps</span>
+                        <span class="feature-tag">Visualization</span>
+                        <span class="feature-tag">Collaboration</span>
+                    </div>
+                    <a href="https://wandb.ai" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://hex.tech" target="_blank" class="platform-name">Hex</a>
+                        <span class="platform-badge emerging">Data Science</span>
+                    </div>
+                    <p class="platform-description">Collaborative data science platform for analytics and machine learning projects with notebook-style interface.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Notebooks</span>
+                        <span class="feature-tag">Collaboration</span>
+                        <span class="feature-tag">Analytics</span>
+                        <span class="feature-tag">Visualization</span>
+                    </div>
+                    <a href="https://hex.tech" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://bigml.com" target="_blank" class="platform-name">BigML</a>
+                        <span class="platform-badge">AutoML</span>
+                    </div>
+                    <p class="platform-description">End-to-end machine learning platform offering automated ML tools and deployable models for businesses.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">AutoML</span>
+                        <span class="feature-tag">Deployment</span>
+                        <span class="feature-tag">Business</span>
+                        <span class="feature-tag">No-code</span>
+                    </div>
+                    <a href="https://bigml.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://together.ai" target="_blank" class="platform-name">Together AI</a>
+                        <span class="platform-badge emerging">LLM Hosting</span>
+                    </div>
+                    <p class="platform-description">Hosted LLM inference platform using Hugging Face compatible open-source models with high performance.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">LLM Hosting</span>
+                        <span class="feature-tag">Open Source</span>
+                        <span class="feature-tag">High Performance</span>
+                        <span class="feature-tag">API</span>
+                    </div>
+                    <a href="https://together.ai" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://runpod.io" target="_blank" class="platform-name">RunPod</a>
+                        <span class="platform-badge emerging">GPU Cloud</span>
+                    </div>
+                    <p class="platform-description">GPU-based cloud containers for running ML workloads and models with flexible pricing and easy deployment.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">GPU Cloud</span>
+                        <span class="feature-tag">Containers</span>
+                        <span class="feature-tag">ML Workloads</span>
+                        <span class="feature-tag">Cost-effective</span>
+                    </div>
+                    <a href="https://runpod.io" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://bentoml.org" target="_blank" class="platform-name">BentoML</a>
+                        <span class="platform-badge niche">Model Serving</span>
+                    </div>
+                    <p class="platform-description">Platform for model serving and deployment with features for packaging, serving, and scaling ML models.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Model Serving</span>
+                        <span class="feature-tag">Deployment</span>
+                        <span class="feature-tag">Packaging</span>
+                        <span class="feature-tag">Scaling</span>
+                    </div>
+                    <a href="https://bentoml.org" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://replicate.com" target="_blank" class="platform-name">Replicate</a>
+                        <span class="platform-badge emerging">Model APIs</span>
+                    </div>
+                    <p class="platform-description">Run and fine-tune open-source models with simple API calls. Deploy custom models with automatic scaling.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Model APIs</span>
+                        <span class="feature-tag">Fine-tuning</span>
+                        <span class="feature-tag">Scaling</span>
+                        <span class="feature-tag">Open Source</span>
+                    </div>
+                    <a href="https://replicate.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://modal.com" target="_blank" class="platform-name">Modal</a>
+                        <span class="platform-badge emerging">Serverless</span>
+                    </div>
+                    <p class="platform-description">Serverless cloud platform for running ML workloads with automatic scaling and container management.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Serverless</span>
+                        <span class="feature-tag">Auto-scaling</span>
+                        <span class="feature-tag">Containers</span>
+                        <span class="feature-tag">ML Workloads</span>
+                    </div>
+                    <a href="https://modal.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://lambdalabs.com" target="_blank" class="platform-name">Lambda Labs</a>
+                        <span class="platform-badge emerging">GPU Cloud</span>
+                    </div>
+                    <p class="platform-description">GPU cloud platform optimized for AI and deep learning with pre-configured environments and high-performance hardware.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">GPU Instances</span>
+                        <span class="feature-tag">Deep Learning</span>
+                        <span class="feature-tag">Pre-configured</span>
+                        <span class="feature-tag">High Performance</span>
+                    </div>
+                    <a href="https://lambdalabs.com" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <a href="https://openledger.xyz" target="_blank" class="platform-name">OpenLedger</a>
+                        <span class="platform-badge niche">AI Ecosystem</span>
+                    </div>
+                    <p class="platform-description">AI ecosystem platform with focus on incentives, monetization, and collaborative ownership of AI models.</p>
+                    <div class="platform-features">
+                        <span class="feature-tag">Ecosystem</span>
+                        <span class="feature-tag">Monetization</span>
+                        <span class="feature-tag">Incentives</span>
+                        <span class="feature-tag">Collaboration</span>
+                    </div>
+                    <a href="https://openledger.xyz" target="_blank" class="platform-link">Visit Platform →</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--card-bg); border-radius: 12px;">
+                <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">🔗 Access All Platforms</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Sign up for a pksh.ai account to get unified access to all major AI platforms with single sign-on, 
+                    usage tracking, and personalized recommendations.
+                </p>
+                <button class="btn-hero-primary" onclick="showModal('register')" style="display: inline-block; margin: 0;">
+                    Get Unified Access
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Other pages (simplified for space) -->
     <div id="news" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">AI Intelligence Feed</h1>
-            <div class="status-bar">
-                <div class="status-indicator">
-                    <div class="status-dot"></div>
-                    <span>Live Updates Active</span>
-                </div>
-                <div class="status-indicator">
-                    <span>Last Update: 2 minutes ago</span>
-                </div>
-            </div>
-
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">BREAKTHROUGH</span>
-                            <span class="news-date">Oct 11, 2025</span>
-                        </div>
-                        <h3 class="news-title">OpenAI Achieves $300B Valuation Milestone</h3>
-                        <p class="news-excerpt">Revolutionary funding round led by SoftBank propels OpenAI to unprecedented valuation, signaling new era in AI investment landscape.</p>
-                        <a href="#" class="read-more">Read Analysis →</a>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">RESEARCH</span>
-                            <span class="news-date">Oct 10, 2025</span>
-                        </div>
-                        <h3 class="news-title">DeepSeek-V3.2 Introduces Sparse Attention Revolution</h3>
-                        <p class="news-excerpt">Experimental 685B parameter model demonstrates breakthrough efficiency in long-context processing with novel attention mechanisms.</p>
-                        <a href="#" class="read-more">Explore Technology →</a>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">INNOVATION</span>
-                            <span class="news-date">Oct 9, 2025</span>
-                        </div>
-                        <h3 class="news-title">HunyuanImage-3.0: 80B Parameter Visual AI</h3>
-                        <p class="news-excerpt">Tencent releases largest open-source image generation model featuring mixture-of-experts architecture and commercial-grade quality.</p>
-                        <a href="#" class="read-more">View Samples →</a>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">INDUSTRY</span>
-                            <span class="news-date">Oct 8, 2025</span>
-                        </div>
-                        <h3 class="news-title">Tesla Neural Networks Power Autonomous Future</h3>
-                        <p class="news-excerpt">Advanced neural architectures enable full self-driving capabilities, showcasing real-world AI deployment at massive scale.</p>
-                        <a href="#" class="read-more">Technical Deep-Dive →</a>
-                    </div>
-                </div>
-            </div>
+            <h1 class="section-title">📰 AI News & Intelligence</h1>
+            <p style="text-align: center; color: var(--text-secondary);">Latest AI developments and breakthrough insights</p>
         </section>
     </div>
 
-    <!-- AI Playground Page -->
-    <div id="playground" class="page">
-        <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">AI Neural Interface</h1>
-            
-            <div class="playground-container">
-                <div class="status-bar">
-                    <div class="status-indicator">
-                        <div class="status-dot"></div>
-                        <span>AI Systems Online</span>
-                    </div>
-                    <div class="status-indicator">
-                        <span>GPU Clusters: 847 Active</span>
-                    </div>
-                    <div class="status-indicator">
-                        <span>Latency: 45ms</span>
-                    </div>
-                </div>
-
-                <h3 style="margin-bottom: 1.5rem; font-weight: 600;">Select Neural Network</h3>
-                <div class="model-selector">
-                    <div class="model-option active" onclick="selectModel(this, 'gpt4o')">
-                        <div class="model-name">GPT-4o</div>
-                        <div class="model-provider">OpenAI</div>
-                        <div class="model-specs">Multimodal • 128K Context</div>
-                    </div>
-                    <div class="model-option" onclick="selectModel(this, 'deepseek')">
-                        <div class="model-name">DeepSeek-V3.2-Exp</div>
-                        <div class="model-provider">DeepSeek AI</div>
-                        <div class="model-specs">685B Parameters • Sparse Attention</div>
-                    </div>
-                    <div class="model-option" onclick="selectModel(this, 'claude')">
-                        <div class="model-name">Claude 3.5 Sonnet</div>
-                        <div class="model-provider">Anthropic</div>
-                        <div class="model-specs">200K Context • LMSYS #2</div>
-                    </div>
-                    <div class="model-option" onclick="selectModel(this, 'hunyuan')">
-                        <div class="model-name">HunyuanImage-3.0</div>
-                        <div class="model-provider">Tencent</div>
-                        <div class="model-specs">80B MoE • Image Generation</div>
-                    </div>
-                </div>
-
-                <div class="playground-interface">
-                    <div class="input-panel">
-                        <div class="panel-title">
-                            ⚡ Neural Input
-                        </div>
-                        <textarea 
-                            class="textarea" 
-                            id="aiInput"
-                            placeholder="Enter your prompt for the AI system...
-
-Examples:
-• Explain quantum computing in simple terms
-• Generate a Python function for data analysis  
-• Describe the future of autonomous vehicles
-• Create a marketing strategy for AI startups"
-                        ></textarea>
-                        <button class="btn-primary" style="margin-top: 1rem;" onclick="generateAI()">
-                            <span id="generateText">Process Neural Request</span>
-                        </button>
-                    </div>
-
-                    <div class="output-panel">
-                        <div class="panel-title">
-                            🧠 AI Response
-                        </div>
-                        <div id="aiOutput" class="textarea" style="min-height: 240px; font-family: 'Inter', sans-serif;">
-                            <div style="color: var(--text-muted); font-style: italic;">
-                                AI response will appear here after processing...
-                            </div>
-                        </div>
-                        <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Response Time: <span id="responseTime">-</span></span>
-                            <button class="btn-secondary" onclick="copyResponse()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Copy Response</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Events Page -->
     <div id="events" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">Global AI Summit Calendar</h1>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🏆</div>
-                        <h3 class="card-title">PyTorch Conference 2025</h3>
-                    </div>
-                    <p class="card-description"><strong>Oct 22-23, 2025</strong><br>San Francisco, CA<br>World's premier PyTorch event with 70+ speakers and hands-on workshops.</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-number">5K+</div>
-                            <div class="stat-label">Attendees</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">Open</div>
-                            <div class="stat-label">Registration</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🌍</div>
-                        <h3 class="card-title">World Summit AI</h3>
-                    </div>
-                    <p class="card-description"><strong>Oct 8-9, 2025</strong><br>Amsterdam, Netherlands<br>Europe's largest AI summit with 15,000+ participants and 300+ exhibitors.</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-number">15K</div>
-                            <div class="stat-label">Attendees</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">Live</div>
-                            <div class="stat-label">Event Status</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🚀</div>
-                        <h3 class="card-title">AI By The Bay</h3>
-                    </div>
-                    <p class="card-description"><strong>Nov 17-19, 2025</strong><br>Oakland, CA<br>Enterprise AI conference with focus on practical implementations and ROI.</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-number">3K</div>
-                            <div class="stat-label">Attendees</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">Early</div>
-                            <div class="stat-label">Bird Pricing</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1 class="section-title">📅 Global AI Events</h1>
+            <p style="text-align: center; color: var(--text-secondary);">Discover the most influential AI conferences worldwide</p>
         </section>
     </div>
 
-    <!-- Companies Page -->
     <div id="companies" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">AI Industry Ecosystem</h1>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🏢</div>
-                        <h3 class="card-title">OpenAI</h3>
-                    </div>
-                    <p class="card-description">Leading AI research company behind GPT models, ChatGPT, and DALL-E. Recently valued at $300B with revolutionary language models.</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-number">$300B</div>
-                            <div class="stat-label">Valuation</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Employees</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🔬</div>
-                        <h3 class="card-title">Anthropic</h3>
-                    </div>
-                    <p class="card-description">AI safety focused company developing Claude AI assistant with emphasis on Constitutional AI and responsible development.</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-number">$60B</div>
-                            <div class="stat-label">Valuation</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">300+</div>
-                            <div class="stat-label">Team</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🧠</div>
-                        <h3 class="card-title">DeepMind</h3>
-                    </div>
-                    <p class="card-description">Google's AI research lab with breakthrough achievements in gaming, protein folding, and scientific discovery applications.</p>
-                    <div class="card-stats">
-                        <div class="stat">
-                            <div class="stat-number">Google</div>
-                            <div class="stat-label">Parent</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">1K+</div>
-                            <div class="stat-label">Researchers</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1 class="section-title">🏢 AI Industry Ecosystem</h1>
+            <p style="text-align: center; color: var(--text-secondary);">Companies and organizations shaping AI's future</p>
         </section>
     </div>
 
-    <!-- Research Page -->
+    <div id="playground" class="page">
+        <section class="section" style="margin-top: 90px;">
+            <h1 class="section-title">🎮 AI Neural Interface</h1>
+            <p style="text-align: center; color: var(--text-secondary);">Interactive AI model testing environment</p>
+        </section>
+    </div>
+
     <div id="research" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">AI Research Intelligence</h1>
-            <div class="news-grid">
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">PAPER</span>
-                            <span class="news-date">ArXiv 2025</span>
-                        </div>
-                        <h3 class="news-title">Acquiring Grounded Representations of Words</h3>
-                        <p class="news-excerpt">Shiwali Mohan, Aaron H. Mininger et al. • 247 citations<br>Novel approach to learning grounded word representations through interactive instruction.</p>
-                        <a href="#" class="read-more">Access Paper →</a>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">PATENT</span>
-                            <span class="news-date">July 2025</span>
-                        </div>
-                        <h3 class="news-title">Semantic Categorization with LLMs</h3>
-                        <p class="news-excerpt">Concentric AI • Patent US11,234,567<br>LLM-based semantic categorization with adaptive manifold compression for enterprise data.</p>
-                        <a href="#" class="read-more">Patent Details →</a>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-tag">PAPER</span>
-                            <span class="news-date">ArXiv 2024</span>
-                        </div>
-                        <h3 class="news-title">The Llama 3 Herd of Models</h3>
-                        <p class="news-excerpt">Aaron Grattafiori et al. (Meta AI) • 1,247 citations<br>Comprehensive technical report on Llama 3 architecture and performance benchmarks.</p>
-                        <a href="#" class="read-more">Technical Report →</a>
-                    </div>
-                </div>
-            </div>
+            <h1 class="section-title">📚 AI Research Intelligence</h1>
+            <p style="text-align: center; color: var(--text-secondary);">Latest research papers, patents, and scientific breakthroughs</p>
         </section>
     </div>
 
@@ -1304,18 +1856,249 @@ Examples:
     </footer>
 
     <script>
-        let currentModel = 'gpt4o';
+        // Authentication state
+        let isAuthenticated = false;
+        let currentUser = null;
 
+        // Modal Management
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId + '-modal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId + '-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchModal(fromModal, toModal) {
+            hideModal(fromModal);
+            setTimeout(() => showModal(toModal), 150);
+        }
+
+        // Checkbox Management
+        function toggleCheckbox(checkboxId) {
+            const checkbox = document.querySelector(`#${checkboxId}`).parentNode.querySelector('.checkbox');
+            checkbox.classList.toggle('checked');
+        }
+
+        // User Dropdown
+        function toggleUserDropdown() {
+            const dropdown = document.getElementById('user-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const userProfile = document.querySelector('.user-profile');
+            const dropdown = document.getElementById('user-dropdown');
+            
+            if (userProfile && !userProfile.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        // Form Handlers
+        async function handleSignIn(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('signin-submit');
+            const submitText = document.getElementById('signin-submit-text');
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.innerHTML = `
+                <span class="loading">
+                    <span class="loading-spinner"></span>
+                    Signing in...
+                </span>
+            `;
+
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Simulate successful login
+            if (email && password.length >= 6) {
+                const names = email.split('@')[0].split('.');
+                const firstName = names[0] || 'User';
+                const lastName = names[1] || '';
+                
+                authenticateUser({
+                    firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1),
+                    lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1),
+                    email: email
+                });
+                
+                hideModal('signin');
+                showSuccessMessage('Welcome back! You have successfully signed in.');
+            } else {
+                // Show error
+                if (password.length < 6) {
+                    document.getElementById('signin-password-error').textContent = 'Password must be at least 6 characters';
+                    document.getElementById('signin-password').classList.add('error');
+                }
+            }
+
+            // Reset button
+            submitBtn.disabled = false;
+            submitText.textContent = 'Sign In';
+        }
+
+        async function handleRegister(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('register-submit');
+            const submitText = document.getElementById('register-submit-text');
+            const firstName = document.getElementById('register-firstname').value;
+            const lastName = document.getElementById('register-lastname').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            // Validation
+            let hasErrors = false;
+            
+            if (password.length < 8) {
+                document.getElementById('register-password-error').textContent = 'Password must be at least 8 characters';
+                document.getElementById('register-password').classList.add('error');
+                hasErrors = true;
+            }
+            
+            if (password !== confirmPassword) {
+                document.getElementById('register-confirm-password-error').textContent = 'Passwords do not match';
+                document.getElementById('register-confirm-password').classList.add('error');
+                hasErrors = true;
+            }
+
+            if (hasErrors) return;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.innerHTML = `
+                <span class="loading">
+                    <span class="loading-spinner"></span>
+                    Creating account...
+                </span>
+            `;
+
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2500));
+
+            // Simulate successful registration
+            authenticateUser({
+                firstName: firstName,
+                lastName: lastName,
+                email: email
+            });
+            
+            hideModal('register');
+            showSuccessMessage('Account created successfully! Welcome to pksh.ai');
+
+            // Reset button
+            submitBtn.disabled = false;
+            submitText.textContent = 'Create Account';
+        }
+
+        async function handleForgotPassword(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('forgot-submit');
+            const submitText = document.getElementById('forgot-submit-text');
+            const email = document.getElementById('forgot-email').value;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.innerHTML = `
+                <span class="loading">
+                    <span class="loading-spinner"></span>
+                    Sending...
+                </span>
+            `;
+
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Show success message in modal
+            const modalBody = document.querySelector('#forgot-password-modal .modal-body');
+            modalBody.innerHTML = `
+                <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid var(--success); border-radius: 6px; padding: 1rem; margin-bottom: 1rem; color: var(--success); font-size: 0.9rem; text-align: center;">
+                    ✅ Reset link sent to ${email}
+                    <br><br>
+                    Please check your email and follow the instructions to reset your password.
+                </div>
+                <button type="button" class="btn-primary" onclick="switchModal('forgot-password', 'signin')">
+                    Back to Sign In
+                </button>
+            `;
+        }
+
+        function authenticateUser(userData) {
+            isAuthenticated = true;
+            currentUser = userData;
+            
+            // Update UI
+            document.getElementById('nav-auth-guest').style.display = 'none';
+            document.getElementById('nav-auth-user').classList.add('show');
+            
+            // Update user initials
+            const initials = (userData.firstName.charAt(0) + userData.lastName.charAt(0)).toUpperCase();
+            document.getElementById('user-initials').textContent = initials;
+        }
+
+        function signOut() {
+            isAuthenticated = false;
+            currentUser = null;
+            
+            // Update UI
+            document.getElementById('nav-auth-guest').style.display = 'flex';
+            document.getElementById('nav-auth-user').classList.remove('show');
+            
+            showSuccessMessage('You have been signed out successfully.');
+        }
+
+        function socialLogin(provider) {
+            showSuccessMessage(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login will be integrated in production.`);
+        }
+
+        function showSuccessMessage(message) {
+            // Create and show success notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: var(--card-bg);
+                border: 1px solid var(--success);
+                border-radius: 8px;
+                padding: 1rem 1.5rem;
+                color: var(--success);
+                z-index: 3000;
+                backdrop-filter: blur(10px);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Page Navigation
         function showPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Show selected page
             document.getElementById(pageId).classList.add('active');
             
-            // Update nav links
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
@@ -1326,113 +2109,39 @@ Examples:
             }
         }
 
-        function selectModel(element, modelId) {
-            document.querySelectorAll('.model-option').forEach(option => {
-                option.classList.remove('active');
-            });
-            element.classList.add('active');
-            currentModel = modelId;
-        }
-
-        function generateAI() {
-            const input = document.getElementById('aiInput').value;
-            const output = document.getElementById('aiOutput');
-            const generateText = document.getElementById('generateText');
-            const responseTime = document.getElementById('responseTime');
-            
-            if (!input.trim()) {
-                alert('Please enter a prompt');
-                return;
-            }
-
-            // Show loading state
-            generateText.innerHTML = `
-                <span class="loading">
-                    Processing
-                    <div class="loading-dots">
-                        <div class="loading-dot"></div>
-                        <div class="loading-dot"></div>
-                        <div class="loading-dot"></div>
-                    </div>
-                </span>
-            `;
-
-            // Simulate AI processing
-            const startTime = Date.now();
-            setTimeout(() => {
-                const processingTime = Date.now() - startTime;
-                
-                const responses = {
-                    'gpt4o': `<div style="color: var(--accent-cyan); margin-bottom: 1rem;"><strong>🤖 GPT-4o Neural Response</strong></div>
-                              <p style="margin-bottom: 1rem;">${input}</p>
-                              <p style="margin-bottom: 1rem;">As GPT-4o, I process your request through advanced multimodal reasoning capabilities. This demonstration showcases my ability to understand context, generate coherent responses, and provide insights across text, image, and audio modalities.</p>
-                              <div style="background: var(--secondary-bg); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                  <strong>Capabilities:</strong><br>
-                                  • Multimodal understanding<br>
-                                  • Advanced reasoning<br>
-                                  • Real-time processing<br>
-                                  • Context-aware responses
-                              </div>`,
-                    'deepseek': `<div style="color: var(--accent-cyan); margin-bottom: 1rem;"><strong>🧠 DeepSeek-V3.2-Exp Response</strong></div>
-                                <p style="margin-bottom: 1rem;">Query: "${input}"</p>
-                                <p style="margin-bottom: 1rem;">Utilizing revolutionary sparse attention mechanisms, I efficiently process your request while maintaining high-quality output. My 685B parameter architecture enables sophisticated reasoning across complex domains.</p>
-                                <div style="background: var(--secondary-bg); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                    <strong>Technical Features:</strong><br>
-                                    • Sparse attention architecture<br>
-                                    • 685B parameters<br>
-                                    • Long-context processing<br>
-                                    • Efficient inference
-                                </div>`,
-                    'claude': `<div style="color: var(--accent-cyan); margin-bottom: 1rem;"><strong>🎵 Claude 3.5 Sonnet Analysis</strong></div>
-                              <p style="margin-bottom: 1rem;">Input Analysis: "${input}"</p>
-                              <p style="margin-bottom: 1rem;">As Claude 3.5 Sonnet, ranked #2 on LMSYS Arena, I excel at analytical reasoning and detailed explanations. My constitutional AI training ensures helpful, harmless, and honest responses.</p>
-                              <div style="background: var(--secondary-bg); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                  <strong>Strengths:</strong><br>
-                                  • Advanced reasoning<br>
-                                  • Code generation<br>
-                                  • Long-form analysis<br>
-                                  • Ethical AI interactions
-                              </div>`,
-                    'hunyuan': `<div style="color: var(--accent-cyan); margin-bottom: 1rem;"><strong>🎨 HunyuanImage-3.0 Processing</strong></div>
-                               <p style="margin-bottom: 1rem;">Prompt: "${input}"</p>
-                               <div style="background: var(--secondary-bg); padding: 2rem; text-align: center; border-radius: 6px; margin: 1rem 0;">
-                                   <div style="font-size: 3rem; margin-bottom: 1rem;">🖼️</div>
-                                   <em>[Generated Image Would Appear Here]</em>
-                               </div>
-                               <p>As the largest open-source image generation MoE model with 80B parameters, I create high-quality visuals using advanced mixture-of-experts architecture.</p>
-                               <div style="background: var(--secondary-bg); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                   <strong>Features:</strong><br>
-                                   • 80B parameter MoE<br>
-                                   • Photorealistic quality<br>
-                                   • Commercial licensing<br>
-                                   • Advanced prompt understanding
-                               </div>`
-                };
-
-                output.innerHTML = responses[currentModel] || responses['gpt4o'];
-                responseTime.textContent = `${processingTime}ms`;
-                generateText.textContent = 'Process Neural Request';
-            }, 2000);
-        }
-
-        function copyResponse() {
-            const output = document.getElementById('aiOutput');
-            const textToCopy = output.textContent || output.innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                // Show feedback
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = 'Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
-            });
-        }
-
         function toggleMobileMenu() {
-            // Mobile menu functionality would go here
             console.log('Mobile menu toggle');
         }
+
+        // Clear form errors on input
+        document.addEventListener('input', function(event) {
+            if (event.target.classList.contains('form-input')) {
+                event.target.classList.remove('error');
+                const errorElement = event.target.parentNode.querySelector('.form-error');
+                if (errorElement) {
+                    errorElement.textContent = '';
+                }
+            }
+        });
+
+        // Close modals on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const openModal = document.querySelector('.modal-overlay.show');
+                if (openModal) {
+                    openModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Close modal on overlay click
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
 
         // Smooth scrolling and navigation effects
         window.addEventListener('scroll', function() {
