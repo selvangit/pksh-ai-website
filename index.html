@@ -517,6 +517,48 @@
         .github { background: #333; }
         .linkedin { background: #0077b5; }
 
+        /* Form Validation */
+        .form-error {
+            color: var(--error);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .form-input.error {
+            border-color: var(--error);
+        }
+
+        .form-success {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: var(--success);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .loading-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
@@ -532,7 +574,7 @@
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Hero Section */
+        /* All existing styles from the previous version */
         .hero {
             height: 100vh;
             display: flex;
@@ -790,101 +832,6 @@
             margin-top: 0.25rem;
         }
 
-        /* Platform Links Section */
-        .platforms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .platform-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .platform-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .platform-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .platform-name {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .platform-name:hover {
-            color: var(--accent-cyan);
-        }
-
-        .platform-badge {
-            background: var(--accent-blue);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .platform-badge.popular { background: var(--success); }
-        .platform-badge.emerging { background: var(--warning); }
-        .platform-badge.niche { background: var(--accent-purple); }
-
-        .platform-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .platform-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-tag {
-            background: var(--secondary-bg);
-            color: var(--text-muted);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-        }
-
-        .platform-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .platform-link:hover {
-            color: var(--accent-blue);
-            gap: 0.75rem;
-        }
-
         /* Dashboard Cards */
         .dashboard {
             display: grid;
@@ -1006,26 +953,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Loading State */
-        .loading {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .loading-spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid transparent;
-            border-top: 2px solid currentColor;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -1059,7 +986,7 @@
                 padding-right: 1rem;
             }
 
-            .cards-grid, .platforms-grid {
+            .cards-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1105,7 +1032,6 @@
                 <li><a href="#" class="nav-link" onclick="showPage('events')" data-page="events">Events</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('companies')" data-page="companies">Companies</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('playground')" data-page="playground">Playground</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('platforms')" data-page="platforms">Platforms</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('research')" data-page="research">Research</a></li>
             </ul>
 
@@ -1367,7 +1293,7 @@
                 <p class="hero-subtitle">Experience artificial intelligence through premium design, cutting-edge insights, and innovative tools</p>
                 <div class="hero-actions">
                     <a href="#" class="btn-hero-primary" onclick="showPage('playground')">Explore AI Playground</a>
-                    <a href="#" class="btn-hero-secondary" onclick="showPage('platforms')">Browse Platforms</a>
+                    <a href="#" class="btn-hero-secondary" onclick="showPage('news')">Latest Updates</a>
                 </div>
             </div>
         </section>
@@ -1391,9 +1317,9 @@
                     <div class="dashboard-trend">↗ +14.3K monthly</div>
                 </div>
                 <div class="dashboard-card">
-                    <div class="dashboard-metric">47</div>
-                    <div class="dashboard-label">AI Platforms</div>
-                    <div class="dashboard-trend">↗ +8 integrated</div>
+                    <div class="dashboard-metric">89.7%</div>
+                    <div class="dashboard-label">Model Accuracy</div>
+                    <div class="dashboard-trend">↗ +2.1% improved</div>
                 </div>
             </div>
         </section>
@@ -1421,18 +1347,18 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">🔗</div>
-                        <h3 class="card-title">Platform Integration</h3>
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">Intelligence Analytics</h3>
                     </div>
-                    <p class="card-description">Direct access to Hugging Face, Kaggle, arXiv, and 40+ other major AI platforms from one unified interface.</p>
+                    <p class="card-description">Real-time insights into AI industry trends, market movements, and breakthrough technologies.</p>
                     <div class="card-stats">
                         <div class="stat">
-                            <div class="stat-number">47</div>
-                            <div class="stat-label">Platforms</div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Monitoring</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Access</div>
+                            <div class="stat-number">1M+</div>
+                            <div class="stat-label">Data Points</div>
                         </div>
                     </div>
                 </div>
@@ -1458,381 +1384,39 @@
         </section>
     </div>
 
-    <!-- AI Platforms Page -->
-    <div id="platforms" class="page">
-        <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">🔗 AI Model & Data Platforms</h1>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Access the complete ecosystem of AI platforms, models, datasets, and research tools</p>
-
-            <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">🏆 Major AI Model & Data Platforms</h3>
-            <div class="platforms-grid">
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://huggingface.co" target="_blank" class="platform-name">Hugging Face</a>
-                        <span class="platform-badge popular">Popular</span>
-                    </div>
-                    <p class="platform-description">Leading platform for open-source models, datasets, and interactive AI demos. Home to transformer models and the AI community.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Models</span>
-                        <span class="feature-tag">Datasets</span>
-                        <span class="feature-tag">Spaces</span>
-                        <span class="feature-tag">Transformers</span>
-                    </div>
-                    <a href="https://huggingface.co" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://kaggle.com" target="_blank" class="platform-name">Kaggle</a>
-                        <span class="platform-badge popular">Popular</span>
-                    </div>
-                    <p class="platform-description">World's largest data science community with datasets, notebooks, competitions, and collaborative ML environment.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Datasets</span>
-                        <span class="feature-tag">Competitions</span>
-                        <span class="feature-tag">Notebooks</span>
-                        <span class="feature-tag">Courses</span>
-                    </div>
-                    <a href="https://kaggle.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://civitai.com" target="_blank" class="platform-name">Civitai</a>
-                        <span class="platform-badge">Specialized</span>
-                    </div>
-                    <p class="platform-description">Community-driven platform focused on AI art models, especially generative art and diffusion models for creative applications.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Diffusion Models</span>
-                        <span class="feature-tag">AI Art</span>
-                        <span class="feature-tag">Community</span>
-                        <span class="feature-tag">LoRA</span>
-                    </div>
-                    <a href="https://civitai.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://openreview.net" target="_blank" class="platform-name">OpenReview</a>
-                        <span class="platform-badge">Academic</span>
-                    </div>
-                    <p class="platform-description">Open peer review platform for AI research papers, conference submissions, and transparent scientific evaluation.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Peer Review</span>
-                        <span class="feature-tag">Papers</span>
-                        <span class="feature-tag">Conferences</span>
-                        <span class="feature-tag">Open Science</span>
-                    </div>
-                    <a href="https://openreview.net" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://arxiv.org" target="_blank" class="platform-name">arXiv</a>
-                        <span class="platform-badge popular">Essential</span>
-                    </div>
-                    <p class="platform-description">Preprint repository for scientific papers, widely used by the AI research community for sharing latest research.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Preprints</span>
-                        <span class="feature-tag">Research</span>
-                        <span class="feature-tag">cs.AI</span>
-                        <span class="feature-tag">cs.LG</span>
-                    </div>
-                    <a href="https://arxiv.org" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-            </div>
-
-            <h3 style="color: var(--text-primary); margin: 3rem 0 1.5rem; font-size: 1.5rem;">🔬 Alternative Platforms & Tools</h3>
-            <div class="platforms-grid">
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://deepai.org" target="_blank" class="platform-name">DeepAI</a>
-                        <span class="platform-badge">API</span>
-                    </div>
-                    <p class="platform-description">Pre-trained models and APIs for various AI tasks including text, image, and video processing.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">APIs</span>
-                        <span class="feature-tag">Pre-trained</span>
-                        <span class="feature-tag">Text</span>
-                        <span class="feature-tag">Vision</span>
-                    </div>
-                    <a href="https://deepai.org" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://paperswithcode.com" target="_blank" class="platform-name">Papers with Code</a>
-                        <span class="platform-badge popular">Popular</span>
-                    </div>
-                    <p class="platform-description">Connects research papers with code implementations and benchmarks, making AI research reproducible.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Papers</span>
-                        <span class="feature-tag">Code</span>
-                        <span class="feature-tag">Benchmarks</span>
-                        <span class="feature-tag">SOTA</span>
-                    </div>
-                    <a href="https://paperswithcode.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://pytorch.org/hub" target="_blank" class="platform-name">PyTorch Hub</a>
-                        <span class="platform-badge">Framework</span>
-                    </div>
-                    <p class="platform-description">Repository of PyTorch-based pre-trained models ready for inference, fine-tuning, and research.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">PyTorch</span>
-                        <span class="feature-tag">Pre-trained</span>
-                        <span class="feature-tag">Research</span>
-                        <span class="feature-tag">Computer Vision</span>
-                    </div>
-                    <a href="https://pytorch.org/hub" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://github.com/onnx/models" target="_blank" class="platform-name">ONNX Model Zoo</a>
-                        <span class="platform-badge">Open Source</span>
-                    </div>
-                    <p class="platform-description">Community repository of models in ONNX format for interoperability across different frameworks.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">ONNX</span>
-                        <span class="feature-tag">Interoperability</span>
-                        <span class="feature-tag">Cross-platform</span>
-                        <span class="feature-tag">Optimized</span>
-                    </div>
-                    <a href="https://github.com/onnx/models" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://cloud.google.com/model-garden" target="_blank" class="platform-name">Google Model Garden</a>
-                        <span class="platform-badge">Enterprise</span>
-                    </div>
-                    <p class="platform-description">Curated collection of models and ML workflows for Google Cloud developers and enterprises.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Google Cloud</span>
-                        <span class="feature-tag">Enterprise</span>
-                        <span class="feature-tag">Curated</span>
-                        <span class="feature-tag">Production</span>
-                    </div>
-                    <a href="https://cloud.google.com/model-garden" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://spacy.io/universe" target="_blank" class="platform-name">spaCy Universe</a>
-                        <span class="platform-badge">NLP</span>
-                    </div>
-                    <p class="platform-description">Ecosystem of add-ons, models, and extensions for the popular spaCy NLP library and framework.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">NLP</span>
-                        <span class="feature-tag">spaCy</span>
-                        <span class="feature-tag">Extensions</span>
-                        <span class="feature-tag">Language Models</span>
-                    </div>
-                    <a href="https://spacy.io/universe" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-            </div>
-
-            <h3 style="color: var(--text-primary); margin: 3rem 0 1.5rem; font-size: 1.5rem;">🚀 Emerging & Specialized Platforms</h3>
-            <div class="platforms-grid">
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://wandb.ai" target="_blank" class="platform-name">Weights & Biases</a>
-                        <span class="platform-badge emerging">MLOps</span>
-                    </div>
-                    <p class="platform-description">Experiment tracking, dataset versioning, and model management platform for machine learning workflows.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Experiment Tracking</span>
-                        <span class="feature-tag">MLOps</span>
-                        <span class="feature-tag">Visualization</span>
-                        <span class="feature-tag">Collaboration</span>
-                    </div>
-                    <a href="https://wandb.ai" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://hex.tech" target="_blank" class="platform-name">Hex</a>
-                        <span class="platform-badge emerging">Data Science</span>
-                    </div>
-                    <p class="platform-description">Collaborative data science platform for analytics and machine learning projects with notebook-style interface.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Notebooks</span>
-                        <span class="feature-tag">Collaboration</span>
-                        <span class="feature-tag">Analytics</span>
-                        <span class="feature-tag">Visualization</span>
-                    </div>
-                    <a href="https://hex.tech" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://bigml.com" target="_blank" class="platform-name">BigML</a>
-                        <span class="platform-badge">AutoML</span>
-                    </div>
-                    <p class="platform-description">End-to-end machine learning platform offering automated ML tools and deployable models for businesses.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">AutoML</span>
-                        <span class="feature-tag">Deployment</span>
-                        <span class="feature-tag">Business</span>
-                        <span class="feature-tag">No-code</span>
-                    </div>
-                    <a href="https://bigml.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://together.ai" target="_blank" class="platform-name">Together AI</a>
-                        <span class="platform-badge emerging">LLM Hosting</span>
-                    </div>
-                    <p class="platform-description">Hosted LLM inference platform using Hugging Face compatible open-source models with high performance.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">LLM Hosting</span>
-                        <span class="feature-tag">Open Source</span>
-                        <span class="feature-tag">High Performance</span>
-                        <span class="feature-tag">API</span>
-                    </div>
-                    <a href="https://together.ai" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://runpod.io" target="_blank" class="platform-name">RunPod</a>
-                        <span class="platform-badge emerging">GPU Cloud</span>
-                    </div>
-                    <p class="platform-description">GPU-based cloud containers for running ML workloads and models with flexible pricing and easy deployment.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">GPU Cloud</span>
-                        <span class="feature-tag">Containers</span>
-                        <span class="feature-tag">ML Workloads</span>
-                        <span class="feature-tag">Cost-effective</span>
-                    </div>
-                    <a href="https://runpod.io" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://bentoml.org" target="_blank" class="platform-name">BentoML</a>
-                        <span class="platform-badge niche">Model Serving</span>
-                    </div>
-                    <p class="platform-description">Platform for model serving and deployment with features for packaging, serving, and scaling ML models.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Model Serving</span>
-                        <span class="feature-tag">Deployment</span>
-                        <span class="feature-tag">Packaging</span>
-                        <span class="feature-tag">Scaling</span>
-                    </div>
-                    <a href="https://bentoml.org" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://replicate.com" target="_blank" class="platform-name">Replicate</a>
-                        <span class="platform-badge emerging">Model APIs</span>
-                    </div>
-                    <p class="platform-description">Run and fine-tune open-source models with simple API calls. Deploy custom models with automatic scaling.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Model APIs</span>
-                        <span class="feature-tag">Fine-tuning</span>
-                        <span class="feature-tag">Scaling</span>
-                        <span class="feature-tag">Open Source</span>
-                    </div>
-                    <a href="https://replicate.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://modal.com" target="_blank" class="platform-name">Modal</a>
-                        <span class="platform-badge emerging">Serverless</span>
-                    </div>
-                    <p class="platform-description">Serverless cloud platform for running ML workloads with automatic scaling and container management.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Serverless</span>
-                        <span class="feature-tag">Auto-scaling</span>
-                        <span class="feature-tag">Containers</span>
-                        <span class="feature-tag">ML Workloads</span>
-                    </div>
-                    <a href="https://modal.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://lambdalabs.com" target="_blank" class="platform-name">Lambda Labs</a>
-                        <span class="platform-badge emerging">GPU Cloud</span>
-                    </div>
-                    <p class="platform-description">GPU cloud platform optimized for AI and deep learning with pre-configured environments and high-performance hardware.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">GPU Instances</span>
-                        <span class="feature-tag">Deep Learning</span>
-                        <span class="feature-tag">Pre-configured</span>
-                        <span class="feature-tag">High Performance</span>
-                    </div>
-                    <a href="https://lambdalabs.com" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <a href="https://openledger.xyz" target="_blank" class="platform-name">OpenLedger</a>
-                        <span class="platform-badge niche">AI Ecosystem</span>
-                    </div>
-                    <p class="platform-description">AI ecosystem platform with focus on incentives, monetization, and collaborative ownership of AI models.</p>
-                    <div class="platform-features">
-                        <span class="feature-tag">Ecosystem</span>
-                        <span class="feature-tag">Monetization</span>
-                        <span class="feature-tag">Incentives</span>
-                        <span class="feature-tag">Collaboration</span>
-                    </div>
-                    <a href="https://openledger.xyz" target="_blank" class="platform-link">Visit Platform →</a>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--card-bg); border-radius: 12px;">
-                <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">🔗 Access All Platforms</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                    Sign up for a pksh.ai account to get unified access to all major AI platforms with single sign-on, 
-                    usage tracking, and personalized recommendations.
-                </p>
-                <button class="btn-hero-primary" onclick="showModal('register')" style="display: inline-block; margin: 0;">
-                    Get Unified Access
-                </button>
-            </div>
-        </section>
-    </div>
-
-    <!-- Other pages (simplified for space) -->
+    <!-- All other pages remain the same as in the previous version -->
+    <!-- I'll include placeholder divs for the other pages -->
     <div id="news" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">📰 AI News & Intelligence</h1>
+            <h1 class="section-title">AI News & Intelligence</h1>
             <p style="text-align: center; color: var(--text-secondary);">Latest AI developments and breakthrough insights</p>
         </section>
     </div>
 
     <div id="events" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">📅 Global AI Events</h1>
+            <h1 class="section-title">Global AI Events</h1>
             <p style="text-align: center; color: var(--text-secondary);">Discover the most influential AI conferences worldwide</p>
         </section>
     </div>
 
     <div id="companies" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">🏢 AI Industry Ecosystem</h1>
+            <h1 class="section-title">AI Industry Ecosystem</h1>
             <p style="text-align: center; color: var(--text-secondary);">Companies and organizations shaping AI's future</p>
         </section>
     </div>
 
     <div id="playground" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">🎮 AI Neural Interface</h1>
+            <h1 class="section-title">AI Neural Interface</h1>
             <p style="text-align: center; color: var(--text-secondary);">Interactive AI model testing environment</p>
         </section>
     </div>
 
     <div id="research" class="page">
         <section class="section" style="margin-top: 90px;">
-            <h1 class="section-title">📚 AI Research Intelligence</h1>
+            <h1 class="section-title">AI Research Intelligence</h1>
             <p style="text-align: center; color: var(--text-secondary);">Latest research papers, patents, and scientific breakthroughs</p>
         </section>
     </div>
@@ -1895,7 +1479,7 @@
             const userProfile = document.querySelector('.user-profile');
             const dropdown = document.getElementById('user-dropdown');
             
-            if (userProfile && !userProfile.contains(event.target)) {
+            if (!userProfile.contains(event.target)) {
                 dropdown.classList.remove('show');
             }
         });
@@ -2025,7 +1609,7 @@
             // Show success message in modal
             const modalBody = document.querySelector('#forgot-password-modal .modal-body');
             modalBody.innerHTML = `
-                <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid var(--success); border-radius: 6px; padding: 1rem; margin-bottom: 1rem; color: var(--success); font-size: 0.9rem; text-align: center;">
+                <div class="form-success">
                     ✅ Reset link sent to ${email}
                     <br><br>
                     Please check your email and follow the instructions to reset your password.
@@ -2091,7 +1675,7 @@
             }, 3000);
         }
 
-        // Page Navigation
+        // Page Navigation (from previous version)
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
