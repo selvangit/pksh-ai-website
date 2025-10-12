@@ -1,0 +1,22 @@
+{
+  "name": "pksh-ai-website",
+  "version": "1.0.0",
+  "description": "AI-focused website with news, events, companies, and playground",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "python -m http.server 8000 --directory src",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "vercel --prod",
+    "dev": "vercel dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selvangit/pksh-ai-website.git"
+  },
+  "keywords": ["AI", "machine-learning", "technology", "events", "companies"],
+  "author": "selvangit",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}
