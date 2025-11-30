@@ -12,6 +12,7 @@ A comprehensive AI-focused website featuring news, events, company insights, and
 - **📅 Events Calendar**: Global AI conferences, meetups, and workshops
 - **🏢 Company Ecosystem**: Industry landscape, partnerships, and market analysis
 - **🎮 AI Playground**: Interactive tools for testing cutting-edge AI models
+- - **🧠 AI Neural Interface**: Dedicated page for exploring AI SDK options (Vercel AI SDK, Google AI Studio, Chatbot Widgets) - opens in separate tab
 - **📜 Patent Tracker**: Recent AI patent approvals and innovations
 - **📚 Research Papers**: Top publications, citations, and trending research
 
@@ -73,6 +74,7 @@ pksh-ai-website/
 ├── vercel.json               # Vercel configuration
 ├── .gitignore               # Git ignore rules
 ├── .github/
+├── ai-neural-interface.html  # AI Neural Interface (separate tab)
 │   └── workflows/
 │       ├── deploy-vercel.yml    # Vercel deployment
 │       └── deploy-pages.yml     # GitHub Pages deployment
