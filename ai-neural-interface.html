@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Neural Interface - pksh.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary-bg: #000000;
+      --secondary-bg: #0a0a0a;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.4);
+      --accent-blue: #1e90ff;
+      --accent-cyan: #00d4ff;
+      --accent-purple: #8b5cf6;
+      --success: #00ff88;
+      --warning: #ffb800;
+      --error: #ff4757;
+      --tesla-red: #dc2626;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .card-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .card-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .dashboard-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .dashboard-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <h1 class="section-title">AI Neural Interface</h1>
+    <p class="section-subtitle">Interactive AI model testing environment</p>
+    
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">⚡</div>
+          <h3 class="card-title">Vercel AI SDK</h3>
+        </div>
+        <p class="card-description"><strong>What it is:</strong> A free, open-source library for TypeScript/JavaScript that makes it easy to build streaming AI applications.</p>
+        <p class="card-description"><strong>Why it's good:</strong> It unifies access to many providers (Gemini, OpenAI, Anthropic) and handles complex features like streaming responses.</p>
+        <p class="card-description"><strong>How to embed:</strong> You use the SDK in your web application's code to build a fully custom and fast AI experience.</p>
+        <div class="card-stats">
+          <div class="stat"><div class="stat-number">Open</div><div class="stat-label">Source</div></div>
+          <div class="stat"><div class="stat-number">Multi</div><div class="stat-label">Provider</div></div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🧪</div>
+          <h3 class="card-title">Google AI Studio</h3>
+        </div>
+        <p class="card-description"><strong>What it is:</strong> Free API access to Gemini models with flexible integration options.</p>
+        <p class="card-description"><strong>Why it's good:</strong> Generous free tier, powerful models, and easy-to-use API for custom AI features.</p>
+        <p class="card-description"><strong>How to embed:</strong> Use Google's API to create custom AI interactions directly in your application.</p>
+        <div class="card-stats">
+          <div class="stat"><div class="stat-number">Free</div><div class="stat-label">Tier</div></div>
+          <div class="stat"><div class="stat-number">Gemini</div><div class="stat-label">Powered</div></div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🤖</div>
+          <h3 class="card-title">Chatbot Widget Services</h3>
+        </div>
+        <p class="card-description"><strong>What it is:</strong> Free-tier chatbot services like Jotform or Botpress that provide ready-to-embed AI chat widgets.</p>
+        <p class="card-description"><strong>Why it's good:</strong> Quick widget embed with minimal code, perfect for adding conversational AI without custom development.</p>
+        <p class="card-description"><strong>How to embed:</strong> Copy-paste a simple embed code snippet into your website for instant AI chat functionality.</p>
+        <div class="card-stats">
+          <div class="stat"><div class="stat-number">Quick</div><div class="stat-label">Setup</div></div>
+          <div class="stat"><div class="stat-number">No-Code</div><div class="stat-label">Embed</div></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard">
+      <div class="dashboard-card" style="grid-column: 1 / -1;">
+        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--accent-cyan);">🔑 Key Takeaway</h3>
+        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+          For the <strong style="color: var(--text-primary);">easiest path to a free, functional, and embeddable AI feature</strong>, consider these approaches:
+        </p>
+        <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 2rem; margin-bottom: 1rem;">
+          <li><strong style="color: var(--accent-cyan);">Google AI Studio:</strong> Flexible API approach with generous free tier for custom AI experiences</li>
+          <li><strong style="color: var(--accent-cyan);">Vercel AI SDK:</strong> Open-source powerhouse for building production-ready streaming AI applications</li>
+          <li><strong style="color: var(--accent-cyan);">Quick Widgets:</strong> Free-tier chatbot services (Jotform, Botpress) for instant AI chat embedding</li>
+        </ul>
+        <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+          ✨ Choose based on your needs: Custom development with Vercel AI SDK, API integration with Google AI Studio, or no-code widgets for quick deployment.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
